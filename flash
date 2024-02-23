@@ -1,0 +1,41 @@
+import tkinter as tk
+from tkinter import PhotoImage
+import random
+
+class FlashlightApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Flashlight App")
+
+        # Load flashlight images
+        self.flashlight_on_img = PhotoImage(file="flashlight_on.png")
+        self.flashlight_off_img = PhotoImage(file="flashlight_off.png")
+
+        # Create and configure GUI elements
+        self.flashlight_button = tk.Button(root, image=self.flashlight_off_img, command=self.toggle_flashlight)
+        self.flashlight_button.pack(pady=20)
+
+        # Simulate Google Ads
+        self.ad_label = tk.Label(root, text="Advertisement: Your Ad Here")
+        self.ad_label.pack(pady=10)
+
+    def toggle_flashlight(self):
+        if self.flashlight_button['image'] == self.flashlight_off_img:
+            self.flashlight_button['image'] = self.flashlight_on_img
+        else:
+            self.flashlight_button['image'] = self.flashlight_off_img
+
+    def update_ads(self):
+        # Simulate fetching and displaying Google Ads
+        ads = ["Ad 1: Buy now!", "Ad 2: Special offer!", "Ad 3: Limited time discount!"]
+        random_ad = random.choice(ads)
+        self.ad_label.config(text=f"Advertisement: {random_ad}")
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = FlashlightApp(root)
+
+    # Simulate updating ads every 10 seconds
+    root.after(10000, app.update_ads)
+
+    root.mainloop()
